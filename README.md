@@ -34,9 +34,9 @@ git clone https://github.com/shadcnspace/crypgo-shadcn-ui-landingpage.git
 ```bash
 npm install
 # or
-yarn install
-# or
 pnpm install
+# or
+yarn install
 
 ```
 
@@ -44,6 +44,10 @@ pnpm install
 
 ```bash
 npm run dev
+# or
+pnpm dev
+# or
+yarn dev
 
 ```
 
