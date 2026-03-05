@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import BuyCrypto from "./buy-form";
 import SellCrypto from "./sell-form";
 import CardSlider from "./slider";
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import BrandLogo from "../BrandLogo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
