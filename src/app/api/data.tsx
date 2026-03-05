@@ -7,7 +7,7 @@ export const footerlabels: { label: string; herf: string }[] = [
   { label: "Documentation", herf: "/documentation" },
 ];
 
-export const pricedeta: {
+export const pricedata: {
   title: string;
   short: string;
   icon: string;
@@ -23,7 +23,7 @@ export const pricedeta: {
     short: "BTC/USD",
     icon: "/images/icons/icon-bitcoin.svg",
     background: "bg-chart-5/20",
-    price: "$93,291.24",
+    price: "$72,947.23",
     mark: "$94,040.99 (-0.9%)",
     width: 18,
     height: 23,
@@ -34,7 +34,7 @@ export const pricedeta: {
     short: "ETH/USD",
     icon: "/images/icons/icon-ethereum.svg",
     background: "bg-secondary/15",
-    price: "$3,128.84",
+    price: "$2,135.91",
     mark: "$4,878.26 (-35.9%)",
     width: 18,
     height: 23,
@@ -45,7 +45,7 @@ export const pricedeta: {
     short: "BTC/USD",
     icon: "/images/icons/icon-bitcoin-circle.svg",
     background: "bg-chart-5/20",
-    price: "$443.27",
+    price: "$8.74",
     mark: "$3,785.82 (-88.3%)",
     width: 46,
     height: 46,
@@ -56,7 +56,7 @@ export const pricedeta: {
     short: "LTC/USD",
     icon: "/images/icons/icon-litecoin.svg",
     background: "bg-secondary/15",
-    price: "$86.11",
+    price: "$73.52",
     mark: "$410.26 (-79.1%)",
     width: 18,
     height: 23,
@@ -67,7 +67,7 @@ export const pricedeta: {
     short: "SOL/USD",
     icon: "/images/icons/icon-solana.svg",
     background: "bg-secondary/15",
-    price: "$238.70",
+    price: "$142.83",
     mark: "$259.96 (-8.2%)",
     width: 24,
     height: 24,
@@ -78,7 +78,7 @@ export const pricedeta: {
     short: "DOGE/USD",
     icon: "/images/icons/icon-dogecoin.svg",
     background: "bg-secondary/15",
-    price: "$0.394",
+    price: "$0.0968",
     mark: "$0.7316 (-46.2%)",
     width: 46,
     height: 46,
