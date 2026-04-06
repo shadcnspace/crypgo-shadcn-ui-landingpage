@@ -1,0 +1,66 @@
+---
+import { pricedata } from '../../data/index';
+const slides = [...pricedata, ...pricedata, ...pricedata];
+const cardWidth = 220;
+const cardGap = 24;
+const translateX = (cardWidth + cardGap) * pricedata.length;
+---
+<div class="pt-14 flex flex-col gap-10">
+  <div class="flex flex-col gap-3 items-center justify-center text-center">
+    <p class="text-white font-medium">
+      Featured <span class="text-primary">crypto coins</span>
+    </p>
+    <h2 class="sm:text-5xl text-3xl text-white font-medium">
+      Top crypto coins updates
+    </h2>
+  </div>
+
+  <div class="overflow-hidden">
+    <div class="card-track flex gap-6">
+      {slides.map((item) => (
+        <div class="card-slide flex-shrink-0">
+          <div class="bg-white/5 rounded-xl">
+            <div class="px-5 py-6">
+              <div class="flex flex-col items-center gap-5">
+                <div class={`${item.background} ${item.padding} rounded-full`}>
+                  <img
+                    src={item.icon}
+                    alt={`${item.title} icon`}
+                    width={item.width}
+                    height={item.height}
+                  />
+                </div>
+                <p class="text-white text-xs font-normal text-center">
+                  <span class="text-base font-bold mr-2">{item.title}</span>
+                  {item.short}
+                </p>
+              </div>
+              <div class="flex justify-center mt-2">
+                <p class="text-xl font-bold text-white leading-none">
+                  {item.price}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style define:vars={{ translateX: `${translateX}px` }}>
+  .card-slide {
+    width: 220px;
+  }
+  .card-track {
+    width: max-content;
+    animation: cardScroll 18s linear infinite;
+  }
+  @keyframes cardScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-1 * var(--translateX))); }
+  }
+  .card-track:hover {
+    animation-play-state: paused;
+  }
+</style>

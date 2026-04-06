@@ -1,0 +1,52 @@
+---
+import { upgradeData } from '../../data/index';
+---
+<section class="py-20" id="upgrade">
+  <div class="container px-4">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-white font-medium">
+          Crypgo <span class="text-primary">upgrade</span>
+        </p>
+        <h2 class="text-white sm:text-5xl text-3xl font-medium mb-5">
+          Upgrade your crypto business
+        </h2>
+        <p class="text-white/60 text-lg mb-7">
+          Get faster, safer, more affordable cloud object storage with no
+          central point of failure.
+        </p>
+        <div class="grid sm:grid-cols-2 text-nowrap gap-5">
+          {upgradeData.map((item) => (
+            <div class="flex gap-5">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="text-white fill-current"
+                >
+                  <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1.999 14.413-3.713-3.705L7.7 11.292l2.299 2.295 5.294-5.294 1.414 1.414-6.706 6.706z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg text-white/60">{item.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div class="ml-0 lg:ml-7 justify-self-center">
+          <img
+            src="/images/upgrade/img-upgrade.png"
+            alt="Upgrade"
+            width="625"
+            height="580"
+            class="-mr-5"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

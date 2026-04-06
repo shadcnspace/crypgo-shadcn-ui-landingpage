@@ -1,0 +1,140 @@
+---
+const colorsSnippet = `:root {
+  /* CSS custom properties — supports opacity modifiers like bg-primary/20 */
+  --primary-rgb:    134 239 172;
+  --secondary-rgb:  103 232 249;
+  --background-rgb: 13 17 23;
+}`;
+
+const tailwindColorsSnippet = `// src/styles/global.css
+colors: {
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+}`;
+
+const routeSnippet = `src/pages/
+|— index.astro          →  /
+|— documentation/
+|   |— index.astro      →  /documentation
+|— signin/
+|   |— index.astro      →  /signin
+|— signup/
+|   |— index.astro      →  /signup`;
+
+const islandSnippet = `---
+// .astro page
+import Hero from '../components/home/Hero';
+import Footer from '../components/layout/Footer.astro';
+---
+<!-- Hero hydrates immediately; Footer is static HTML -->
+<Hero client:load />
+<Footer />`;
+
+const envSnippet = `# .env (create at project root)
+PUBLIC_SITE_URL=https://yoursite.com
+# Add your own auth / DB secrets here`;
+---
+
+<div id="configuration" class="pb-10 md:scroll-mt-[180px] scroll-mt-28">
+  <h3 class="text-2xl font-semibold mt-4 text-white">Project Configuration</h3>
+
+  <!-- Colors -->
+  <div class="mt-6 p-6 rounded-md border border-border">
+    <h4 class="text-white text-lg font-medium mb-3">Colors</h4>
+    <p class="text-white/60 mb-4">
+      Colors are defined as CSS custom properties in
+      <code class="text-primary">src/styles/global.css</code>.
+      This pattern lets Tailwind's opacity modifiers (e.g.
+      <code class="text-primary">bg-primary/20</code>) work correctly.
+    </p>
+    <div class="py-4 px-3 rounded-md bg-white/5 font-mono text-sm text-gray-400 whitespace-pre">{colorsSnippet}</div>
+    <p class="text-white/60 mt-4 mb-3">
+      Each CSS variable is wired into Tailwind inside
+      <code class="text-primary">src/styles/global.css (@theme block)</code>:
+    </p>
+    <div class="py-4 px-3 rounded-md bg-white/5 font-mono text-sm text-gray-400 whitespace-pre">{tailwindColorsSnippet}</div>
+  </div>
+
+  <!-- Typography -->
+  <div class="mt-6 p-6 rounded-md border border-border">
+    <h4 class="text-white text-lg font-medium mb-3">Typography</h4>
+    <p class="text-white/60 mb-2">
+      The default font is <strong class="text-white">DM Sans</strong>, loaded from Google Fonts in
+      <code class="text-primary">src/layouts/Layout.astro</code>.
+    </p>
+    <p class="text-white/60">
+      To change the font, swap the Google Fonts <code class="text-primary">&lt;link&gt;</code> tag
+      in the layout and update the <code class="text-primary">font-family</code> in your CSS.
+    </p>
+  </div>
+
+  <!-- Logo -->
+  <div class="mt-6 p-6 rounded-md border border-border">
+    <h4 class="text-white text-lg font-medium mb-3">Logo</h4>
+    <p class="text-white/60 mb-2">
+      Replace <code class="text-primary">public/images/logo/logo.svg</code> with your own logo file.
+    </p>
+    <p class="text-white/60">
+      The logo is referenced directly via <code class="text-primary">/images/logo/logo.svg</code>
+      in <code class="text-primary">Header.tsx</code> and the auth pages.
+    </p>
+  </div>
+
+  <!-- Routing -->
+  <div class="mt-6 p-6 rounded-md border border-border">
+    <h4 class="text-white text-lg font-medium mb-3">Routing</h4>
+    <p class="text-white/60 mb-4">
+      Astro uses file-based routing. Every <code class="text-primary">.astro</code> file
+      inside <code class="text-primary">src/pages/</code> becomes a URL automatically.
+    </p>
+    <div class="py-4 px-3 rounded-md bg-white/5 font-mono text-sm text-gray-400 whitespace-pre">{routeSnippet}</div>
+  </div>
+
+  <!-- React Islands -->
+  <div class="mt-6 p-6 rounded-md border border-border">
+    <h4 class="text-white text-lg font-medium mb-3">React Islands</h4>
+    <p class="text-white/60 mb-2">
+      Interactive components are loaded selectively using Astro's
+      <a href="https://docs.astro.build/en/concepts/islands/" class="text-primary hover:underline" target="_blank" rel="noopener">
+        Islands Architecture
+      </a>.
+    </p>
+    <ul class="list-disc text-white/60 ps-6 space-y-1 mb-4">
+      <li><code class="text-primary">client:load</code> — hydrates immediately (Header, Hero, auth pages)</li>
+      <li><code class="text-primary">client:visible</code> — hydrates when scrolled into view (TimeLine, Portfolio…)</li>
+      <li>No directive — renders as static HTML (Footer, Platform, Perks)</li>
+    </ul>
+    <div class="py-4 px-3 rounded-md bg-white/5 font-mono text-sm text-gray-400 whitespace-pre">{islandSnippet}</div>
+  </div>
+
+  <!-- Authentication -->
+  <div class="mt-6 p-6 rounded-md border border-border">
+    <h4 class="text-white text-lg font-medium mb-3">Authentication</h4>
+    <p class="text-white/60 mb-2">
+      <code class="text-primary">next-auth</code> was removed during the Astro migration.
+      The sign-in and sign-up forms are scaffolded and ready to wire up.
+      Recommended options:
+    </p>
+    <ul class="list-disc text-white/60 ps-6 space-y-1">
+      <li>
+        <a href="https://lucia-auth.com/" class="text-primary hover:underline" target="_blank" rel="noopener">Lucia Auth</a>
+        — native Astro support, session-based
+      </li>
+      <li>
+        <a href="https://authjs.dev/getting-started/installation?framework=astro" class="text-primary hover:underline" target="_blank" rel="noopener">Auth.js for Astro</a>
+        — OAuth providers (Google, GitHub, etc.)
+      </li>
+      <li>Custom JWT logic inside Astro middleware</li>
+    </ul>
+  </div>
+
+  <!-- Environment Variables -->
+  <div class="mt-6 p-6 rounded-md border border-border">
+    <h4 class="text-white text-lg font-medium mb-3">Environment Variables</h4>
+    <p class="text-white/60 mb-4">
+      Create a <code class="text-primary">.env</code> file at the project root.
+      Prefix public variables with <code class="text-primary">PUBLIC_</code> to expose them in client-side code.
+    </p>
+    <div class="py-4 px-3 rounded-md bg-white/5 font-mono text-sm text-gray-400 whitespace-pre">{envSnippet}</div>
+  </div>
+</div>

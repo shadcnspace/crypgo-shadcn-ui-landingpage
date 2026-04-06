@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/home/Hero';
+import BrandLogo from '../components/home/BrandLogo.astro';
+import CardSlider from '../components/home/CardSlider.astro';
+import Work from '../components/home/Work.astro';
+import GlobalReach from '../components/home/GlobalReach';
+import TimeLine from '../components/home/TimeLine.astro';
+import Platform from '../components/home/Platform.astro';
+import Portfolio from '../components/home/Portfolio.astro';
+import Upgrade from '../components/home/Upgrade.astro';
+import Perks from '../components/home/Perks.astro';
+import Faq from '../components/home/Faq.astro';
+---
+
+<Layout title="CrypGo">
+  <main>
+    <Hero client:load />
+    <BrandLogo />
+    <CardSlider />
+    <Work />
+    <GlobalReach client:visible />
+    <TimeLine />
+    <Platform />
+    <Portfolio />
+    <Upgrade />
+    <Perks />
+    <Faq />
+  </main>
+</Layout>
+ 

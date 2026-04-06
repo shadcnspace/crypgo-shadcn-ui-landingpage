@@ -1,0 +1,63 @@
+---
+import { portfolioData } from '../../data/index';
+---
+
+<section class="pt-12" id="portfolio">
+  <div class="container px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 items-center gap-20">
+
+      <div class="portfolio-left lg:-ml-32 opacity-0 -translate-y-16 transition-all duration-700">
+        <img
+          src="/images/portfolio/img-portfolio.png"
+          alt="Crypto Portfolio"
+          width="780"
+          height="700"
+        />
+      </div>
+
+      <div class="portfolio-right opacity-0 translate-y-16 transition-all duration-700">
+        <div class="flex flex-col gap-4">
+          <p class="text-white font-medium">
+            Crypto landing page <span class="text-primary">template</span>
+          </p>
+          <h2 class="text-white sm:text-5xl text-3xl mb-4 font-medium">
+            Create your cryptocurrency portfolio today
+          </h2>
+        </div>
+        <p class="text-white/60 text-lg">
+          Coinbase has a variety of features that make it the best place to start trading.
+        </p>
+        <table class="w-full sm:w-[80%] mt-10">
+          <tbody>
+            {portfolioData.map((item) => (
+              <tr class="border-b border-border">
+                <td class="py-5">
+                  <div class="bg-primary/20 p-3 rounded-full w-fit">
+                    <img src={item.image} alt={item.title} width="24" height="24" />
+                  </div>
+                </td>
+                <td class="py-5">
+                  <h3 class="text-white text-xl ml-5">{item.title}</h3>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.remove('opacity-0', 'translate-y-16', '-translate-y-16');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.portfolio-left, .portfolio-right').forEach(el => observer.observe(el));
+</script>

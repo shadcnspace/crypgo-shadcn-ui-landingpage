@@ -1,0 +1,80 @@
+---
+import { faqData } from '../../data/index';
+---
+
+<section id="faq" class="py-16 text-white">
+  <div class="container">
+    <div class="mx-auto px-4">
+      <div class="text-center mb-10">
+        <p class="text-green-400 uppercase text-sm">Popular questions</p>
+        <h2 class="text-3xl md:text-4xl font-semibold mt-2">
+          Learn more about Crypgo
+        </h2>
+        <p class="text-gray-400 mt-2">
+          We accept 100+ cryptocurrencies around the world
+        </p>
+      </div>
+      <div class="space-y-4">
+        {faqData.map((item, index) => (
+          <div class="faq-item bg-white/5 rounded-lg px-4">
+            <button
+              class="faq-trigger w-full text-left text-lg font-medium py-4 flex items-center justify-between"
+              aria-expanded="false"
+              data-index={index}
+            >
+              {item.question}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="faq-icon w-6 h-6 shrink-0 transition-transform duration-200"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+            <div class="faq-answer hidden text-gray-400 text-base pb-4">
+              {item.answer}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const triggers = document.querySelectorAll<HTMLButtonElement>('.faq-trigger');
+
+  triggers.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item')!;
+      const answer = item.querySelector<HTMLElement>('.faq-answer')!;
+      const icon = btn.querySelector<SVGElement>('.faq-icon')!;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all others
+      triggers.forEach((other) => {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          other.closest('.faq-item')!.querySelector<HTMLElement>('.faq-answer')!.classList.add('hidden');
+          other.querySelector<SVGElement>('.faq-icon')!.style.transform = '';
+        }
+      });
+
+      // Toggle current
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        answer.classList.add('hidden');
+        icon.style.transform = '';
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+</script>

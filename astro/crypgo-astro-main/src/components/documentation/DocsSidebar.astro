@@ -1,0 +1,52 @@
+---
+const navItems = [
+  { label: "Package Versions",      hash: "version"       },
+  { label: "Package Structure",     hash: "structure"     },
+  { label: "Quick Start",           hash: "start"         },
+  { label: "Project Configuration", hash: "configuration" },
+];
+---
+
+<nav class="flex flex-col gap-0.5 mt-4 items-start" id="docs-sidebar">
+  {navItems.map((item) => (
+    <a
+      href={`#${item.hash}`}
+      data-hash={item.hash}
+      class="docs-nav-link py-2.5 hover:bg-primary/20 hover:text-primary xl:min-w-60 lg:min-w-52 min-w-full px-4 rounded-md text-base font-medium transition-colors text-white/60"
+    >
+      {item.label}
+    </a>
+  ))}
+</nav>
+
+<script>
+  // Highlight active nav item based on scroll position
+  const links = document.querySelectorAll<HTMLAnchorElement>('.docs-nav-link');
+  const sections = Array.from(links).map(l => document.getElementById(l.dataset.hash!)).filter(Boolean) as HTMLElement[];
+
+  function setActive(hash: string) {
+    links.forEach(l => {
+      const active = l.dataset.hash === hash;
+      l.classList.toggle('bg-primary', active);
+      l.classList.toggle('text-background', active);
+      l.classList.toggle('text-white/60', !active);
+    });
+  }
+
+  // Set first item active on load
+  if (links[0]) setActive(links[0].dataset.hash!);
+
+  // Click handler
+  links.forEach(l => l.addEventListener('click', () => setActive(l.dataset.hash!)));
+
+  // Scroll spy
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    },
+    { rootMargin: '-30% 0px -60% 0px' }
+  );
+  sections.forEach(s => observer.observe(s));
+</script>
