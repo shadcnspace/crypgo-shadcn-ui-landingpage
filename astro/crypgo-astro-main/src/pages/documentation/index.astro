@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DocsSidebar from '../../components/documentation/DocsSidebar.astro';
+import PackageVersions from '../../components/documentation/PackageVersions.astro';
+import PackageStructure from '../../components/documentation/PackageStructure.astro';
+import QuickStart from '../../components/documentation/QuickStart.astro';
+import ProjectConfiguration from '../../components/documentation/ProjectConfiguration.astro';
+---
+
+<Layout title="Documentation | CrypGo">
+  <div class="bg-background pt-24">
+    <div class="container p-6 lg:pt-44 pt-16">
+      <div class="grid grid-cols-12 gap-6">
+
+        <!-- Desktop sidebar -->
+        <aside class="lg:col-span-3 col-span-12 lg:block hidden">
+          <div class="fixed pe-4">
+            <DocsSidebar />
+          </div>
+        </aside>
+
+        <!-- Mobile nav toggle + drawer -->
+        <div class="lg:hidden col-span-12" x-data="{ open: false }">
+          <button
+            id="mobile-docs-btn"
+            class="mb-4 text-white"
+            aria-label="Open docs menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile drawer (hidden by default) -->
+        <div id="mobile-drawer-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden">
+          <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-full max-w-xs bg-background shadow-lg p-6 z-50">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg font-bold text-white">Docs Menu</h2>
+              <button id="mobile-docs-close" class="text-white text-xl">✕</button>
+            </div>
+            <DocsSidebar />
+          </div>
+        </div>
+
+        <!-- Main content -->
+        <main class="lg:col-span-9 col-span-12">
+          <PackageVersions />
+          <PackageStructure />
+          <QuickStart />
+          <ProjectConfiguration />
+        </main>
+
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const btn = document.getElementById('mobile-docs-btn');
+  const overlay = document.getElementById('mobile-drawer-overlay');
+  const closeBtn = document.getElementById('mobile-docs-close');
+
+  btn?.addEventListener('click', () => overlay?.classList.remove('hidden'));
+  closeBtn?.addEventListener('click', () => overlay?.classList.add('hidden'));
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.add('hidden');
+  });
+</script>

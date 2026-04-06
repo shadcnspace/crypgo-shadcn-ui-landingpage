@@ -1,0 +1,61 @@
+---
+const services = [
+  { icon: "/images/chooseus/chooseus-icon-1.svg", text: "Designed for crypto trading platforms" },
+  { icon: "/images/chooseus/chooseus-icon-2.svg", text: "Kickstart your crypto website today" },
+  { icon: "/images/chooseus/chooseus-icon-3.svg", text: "Launch your blockchain platform today" },
+];
+---
+
+<section id="work">
+  <div class="container px-4 mx-auto lg:max-w-screen-xl">
+    <div class="grid grid-cols-12 items-center">
+
+      <div class="work-animate lg:col-span-7 col-span-12 opacity-0 translate-y-16 transition-all duration-700">
+        <div class="flex flex-col gap-3">
+          <p class="text-white font-medium">
+            Why choose <span class="text-primary">crypto</span>
+          </p>
+          <h2 class="sm:text-5xl text-3xl text-white lg:w-full md:w-[70%] font-medium">
+            Features of the crypto framer mobile application
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-7 mt-11">
+          {services.map((service) => (
+            <div class="flex items-center gap-5">
+              <div class="p-3 bg-primary/15 rounded-full">
+                <img src={service.icon} alt={service.text} width="25" height="25" />
+              </div>
+              <p class="text-white font-medium">{service.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="work-animate-img lg:col-span-5 col-span-12 opacity-0 -translate-y-16 transition-all duration-700">
+        <div class="2xl:-mr-40 mt-9 flex justify-center">
+          <img
+            src="/images/work/img-work-with-us.png"
+            alt="Work with us"
+            width="600"
+            height="425"
+            class="lg:w-full"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.remove('opacity-0', 'translate-y-16', '-translate-y-16');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.work-animate, .work-animate-img').forEach(el => observer.observe(el));
+</script>

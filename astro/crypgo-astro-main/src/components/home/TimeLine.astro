@@ -1,0 +1,105 @@
+---
+import { timelineData } from '../../data/index';
+---
+
+<section class="md:pt-40 pt-9" id="development">
+  <div class="container lg:px-16 px-4">
+    <div class="text-center">
+
+      <div class="timeline-heading opacity-0 -translate-y-16 transition-all duration-700">
+        <div class="flex flex-col gap-4">
+          <p class="text-white font-medium">
+            We deliver <span class="text-primary">best solution</span>
+          </p>
+          <h2 class="text-white sm:text-5xl text-3xl font-medium lg:w-[80%] mx-auto mb-20">
+            One application with multiple options to give you freedom of buying &amp; selling
+          </h2>
+        </div>
+      </div>
+
+      <div class="timeline-body opacity-0 scale-90 transition-all duration-700">
+
+        <!-- Desktop layout -->
+        <div class="md:block hidden relative">
+          <img
+            src="/images/timeline/img-timeline.png"
+            alt="Timeline"
+            width="1220"
+            height="1000"
+            class="w-[80%] mx-auto"
+          />
+          <!-- Planning -->
+          <div class="absolute lg:top-40 top-36 lg:left-0 -left-20 w-72 flex items-center gap-6">
+            <div class="text-right">
+              <h3 class="text-white text-2xl mb-3">Planning</h3>
+              <p class="text-lg text-white/60">Map the crypto projects scope with framer template</p>
+            </div>
+            <div class="bg-primary/15 backdrop-blur-sm px-6 py-2 h-fit rounded-full">
+              <img src="/images/solution/solution-icon-1.svg" alt="Planning" width="44" height="44" class="w-16 h-16" />
+            </div>
+          </div>
+          <!-- Refinement -->
+          <div class="absolute lg:top-40 top-36 lg:right-0 -right-20 w-72 flex items-center gap-6">
+            <div class="bg-primary/15 backdrop-blur-sm p-6 h-fit rounded-full">
+              <img src="/images/solution/solution-icon-2.svg" alt="Refinement" width="44" height="44" />
+            </div>
+            <div class="text-left">
+              <h3 class="text-white text-2xl mb-3">Refinement</h3>
+              <p class="text-lg text-white/60">Refine &amp; improve your crypto landing page</p>
+            </div>
+          </div>
+          <!-- Prototype -->
+          <div class="absolute lg:bottom-48 bottom-36 lg:left-0 -left-20 w-72 flex items-center gap-6">
+            <div class="text-right">
+              <h3 class="text-white text-2xl mb-3">Prototype</h3>
+              <p class="text-lg text-white/60">Build crypto website test for your product</p>
+            </div>
+            <div class="bg-primary/15 backdrop-blur-sm px-6 py-2 h-fit rounded-full">
+              <img src="/images/solution/solution-icon-3.svg" alt="Prototype" width="44" height="44" class="w-16 h-16" />
+            </div>
+          </div>
+          <!-- Support -->
+          <div class="absolute lg:bottom-48 bottom-36 lg:right-0 -right-20 w-72 flex items-center gap-6">
+            <div class="bg-primary/15 backdrop-blur-sm px-6 py-2 h-fit rounded-full">
+              <img src="/images/solution/solution-icon-4.svg" alt="Support" width="44" height="44" class="w-16 h-16" />
+            </div>
+            <div class="text-left">
+              <h3 class="text-white text-nowrap text-2xl mb-3">Support</h3>
+              <p class="text-lg text-white/60">Deploy product live and ensure expert support</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile layout -->
+        <div class="grid sm:grid-cols-2 gap-8 md:hidden">
+          {timelineData.map((item) => (
+            <div class="flex items-center gap-6">
+              <div class="bg-primary/15 p-6 rounded-full">
+                <img src={item.icon} alt={item.title} width="44" height="44" />
+              </div>
+              <div class="text-start">
+                <h4 class="text-2xl text-white mb-2">{item.title}</h4>
+                <p class="text-white/60 text-lg">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target as HTMLElement;
+        el.classList.remove('opacity-0', '-translate-y-16', 'scale-90');
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.timeline-heading, .timeline-body').forEach(el => observer.observe(el));
+</script>

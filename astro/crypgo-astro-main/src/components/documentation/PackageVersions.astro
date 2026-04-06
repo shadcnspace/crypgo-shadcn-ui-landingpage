@@ -1,0 +1,37 @@
+---
+const packages = [
+  { packageName: "Astro",        version: "4.x",  emoji: "🚀" },
+  { packageName: "React",        version: "19.x", emoji: "⚛️" },
+  { packageName: "Tailwindcss",  version: "4.x",  emoji: "🎨" },
+  { packageName: "TypeScript",   version: "5+",   emoji: "📘" },
+  { packageName: "Framer Motion",version: "12.x", emoji: "✨" },
+];
+---
+
+<div id="version" class="md:scroll-mt-[180px] scroll-mt-28">
+  <h3 class="text-2xl mt-4 font-semibold mb-6 text-white">Package Versions (Astro)</h3>
+
+  <div class="w-full flex justify-between lg:gap-0 gap-6 lg:flex-nowrap flex-wrap p-6 rounded-md border border-border">
+    {packages.map((item) => (
+      <div class="lg:w-1/5 md:w-full text-center lg:border-b-0 border-b lg:border-e lg:last:border-e-0 last:border-b-0 border-border pb-4 lg:pb-0">
+        <div class="text-4xl mx-auto w-10 h-10 flex items-center justify-center">
+          {item.emoji}
+        </div>
+        <h5 class="text-2xl font-bold mt-3.5 text-white">{`v${item.version}`}</h5>
+        <p class="text-base font-medium text-white">{item.packageName}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-5 space-y-2">
+    <p class="text-base font-medium text-white/60">
+      This Crypgo template has been converted to Astro with React islands.
+    </p>
+    <p class="text-base font-medium text-white/60">
+      The theme is ready to use and fully customizable per your requirements.
+    </p>
+    <p class="text-base font-medium text-white/60">
+      You should have knowledge of Astro, React, Tailwind, and TypeScript to modify this template.
+    </p>
+  </div>
+</div>

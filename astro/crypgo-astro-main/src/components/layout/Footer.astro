@@ -1,0 +1,97 @@
+---
+import { headerData, footerlabels } from '../../data/index';
+---
+
+<footer class="pt-16 bg-background">
+  <div class="container px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-11 lg:gap-20 md:gap-6 sm:gap-12 gap-6 pb-16">
+      <!-- Brand -->
+      <div class="lg:col-span-4 md:col-span-6 col-span-6 flex flex-col gap-6">
+        <a href="/">
+          <img
+            src="/images/logo/logo.svg"
+            alt="logo"
+            width="135"
+            height="32"
+            style="width: auto; height: auto;"
+          />
+        </a>
+        <p class="text-white/60">
+          Transform your crypto business with Crypgo Framer, a template for
+          startups and blockchain services.
+        </p>
+        <div class="flex gap-6 items-center relative z-[1]">
+          <a href="https://www.facebook.com/" class="group" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="text-white group-hover:text-primary fill-current transition-colors">
+              <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/" class="group" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="text-white group-hover:text-primary fill-current transition-colors">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://www.twitter.com/" class="group" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="text-white group-hover:text-primary fill-current transition-colors">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="lg:col-span-2 md:col-span-3 col-span-6">
+        <h4 class="text-white mb-4 font-medium text-xl">Links</h4>
+        <ul>
+          {headerData.map((item) => (
+            <li class="pb-4">
+              <a href={item.href} class="text-white/60 hover:text-primary transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Other Pages -->
+      <div class="lg:col-span-2 md:col-span-3 col-span-6">
+        <h4 class="text-white mb-4 font-medium text-xl">Other Pages</h4>
+        <ul>
+          {footerlabels.map((item) => (
+            <li class="pb-4">
+              <a href={item.herf} class="text-white/60 hover:text-primary transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Download App -->
+      <div class="lg:col-span-3 md:col-span-4 col-span-6">
+        <h3 class="text-white text-xl font-medium mb-4">Download app</h3>
+        <div class="flex flex-col gap-4">
+          <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/footer/app-store-bedge.svg" alt="App Store" width="126" height="23" />
+          </a>
+          <a href="https://www.apple.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/footer/app-store.svg" alt="Play Store" width="126" height="23" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-white/10" />
+    <p class="text-white/40 text-center py-8">
+      Design &amp; Develop by{" "}
+      <a
+        class="hover:text-primary"
+        target="_blank"
+        href="https://shadcnspace.com/"
+        rel="noopener noreferrer"
+      >
+        shadcnspace.com
+      </a>
+    </p>
+  </div>
+</footer>
