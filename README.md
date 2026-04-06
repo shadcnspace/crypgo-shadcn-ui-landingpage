@@ -22,14 +22,20 @@ If you’re looking for a **high-quality Next.js crypto landing page** with mode
 
 ## 🚀 Getting Started
 
-### 1️⃣ Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/shadcnspace/crypgo-shadcn-ui-landingpage.git
+```
+### 2. Navigate to folder
 
+```bash
+cd nextjs 
+# or
+cd astro
 ```
 
-### 2️⃣ Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 npm install
@@ -37,10 +43,9 @@ npm install
 pnpm install
 # or
 yarn install
-
 ```
 
-### 3️⃣ Run the Development Server
+### 4. Run the Development Server
 
 ```bash
 npm run dev
@@ -48,7 +53,6 @@ npm run dev
 pnpm dev
 # or
 yarn dev
-
 ```
 
 Open **[http://localhost:3000](http://localhost:3000/)** in your browser to see the result.
